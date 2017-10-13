@@ -16,14 +16,14 @@ namespace NumerologyKata
             expected_output.ShouldBeEquivalentTo(result);
         }
 
-        [Fact]
-        public void ReplaceAll2sByAnEqualNumberOf1sAsTheNumberToTheLeft()
+        [Theory]
+        [InlineData(new[] { 3, 2, 3, 4, 5 }, new[] { 3, 1, 1, 1, 3, 4, 5 })]
+        [InlineData(new[] { 2, 3, 4, 5 }, new[] { 2, 3, 4, 5 })]
+        public void ReplaceAll2sByAnEqualNumberOf1sAsTheNumberToTheLeft(int[] input, int[] expected)
         {
             var numerology = new Numerology();
-            var input = new int[] { 3, 2, 3, 4, 5 };
-            var expected_output = new int[] { 3, 1, 1, 1, 3, 4, 5};
             var result = numerology.Parse(input);
-            expected_output.ShouldBeEquivalentTo(result);
+            expected.ShouldBeEquivalentTo(result);
         }
     }
 }
