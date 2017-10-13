@@ -13,12 +13,22 @@ namespace NumerologyKata
         public int[] Parse(int[] input)
         {
             var list = new List<int>();
-            foreach (var item in input)
+
+            for (int i = 0; i < input.Length; i++)
             {
+                var item = input[i];
                 if (item == 9)
                 {
                     list.Add(10);
                     list.Add(10);
+                }
+                else if(item == 2)
+                {
+                    var numberToTheLeft = input[i - 1];
+                    for (int y = 0; y < numberToTheLeft; y++)
+                    {
+                        list.Add(1);
+                    }
                 }
                 else
                 {
