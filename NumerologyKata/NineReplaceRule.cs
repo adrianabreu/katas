@@ -4,14 +4,23 @@ namespace NumerologyKata
 {
     public class NineReplaceRule : ReplaceRule
     {
-        public bool Matches(int number)
+        private bool Matches(int number)
         {
             return number == 9;
         }
 
-        public int[] Replace(int[] input, int index)
+        public int[] Replace(int[] input)
         {
-            return new int[] { 10, 10 };
+            List<int> numbers = new List<int>();
+            foreach (var number in input)
+            {
+                if (Matches(number))
+                    numbers.AddRange(new int[] { 10, 10 });
+                else
+                    numbers.Add(number);
+            }
+            return numbers.ToArray();
         }
+       
     }
 }

@@ -14,20 +14,17 @@ namespace NumerologyKata
             _replacers = new ReplaceRule[]
             {
                 new TwoReplaceRule(),
-                new NineReplaceRule(),
-                new DefaultReplaceRule()
+                new NineReplaceRule()                
             };
         }
 
         public int[] Parse(int[] input)
-        {
-            var list = input
-                        .SelectMany((number, index) =>
-                        {
-                            var replacer = _replacers.First(r => r.Matches(number));
-                            return replacer.Replace(input, index);
-                        });
-            return list.ToArray();
+        {            
+            foreach (var replacer in _replacers)
+            {
+                input = replacer.Replace(input);
+            }
+            return input;
         }
     }
 }
