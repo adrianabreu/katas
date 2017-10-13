@@ -22,14 +22,18 @@ namespace NumerologyKata
                 }
 
                 var numberToTheLeft = input[index - 1];
-
-                for (int y = 0; y < numberToTheLeft; y++)
-                {
-                    list.Add(1);
-                }
+                AddAsManyOnesAsNumberToTheLeft(list, numberToTheLeft);
             }
 
             return list.ToArray();
+        }
+
+        private static void AddAsManyOnesAsNumberToTheLeft(List<int> list, int numberToTheLeft)
+        {
+            for (int y = 0; y < numberToTheLeft; y++)
+            {
+                list.Add(1);
+            }
         }
 
         private bool NotMatch(int number)
