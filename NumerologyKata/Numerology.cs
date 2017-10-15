@@ -19,7 +19,7 @@ namespace NumerologyKata
         }
 
         public int[] Parse(int[] input)
-        {            
+        {
             foreach (var replacer in _replacers)
             {
                 input = replacer.Replace(input);
